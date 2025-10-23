@@ -1,0 +1,71 @@
+/* --- 기본 및 바디 스타일 --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                 Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    /* 사용자의 CSS 컨셉을 바탕으로 한 밝은 테마 */
+    background-color: #f4f4f9; /* 페이지 전체 배경 (캔버스보다 살짝 어둡게) */
+    color: #333; /* 기본 텍스트 색상 */
+}
+
+body {
+    /* Flexbox를 사용해 모든 요소를 세로로, 화면 정중앙에 배치 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 스크롤바 숨기기 */
+}
+
+/* --- 게임 캔버스 스타일 --- */
+#gameCanvas {
+    /* 사용자가 제공한 배경색(#f2f2f2) 유지 (콤보 텍스트가 잘 보임) */
+    background: #f2f2f2; 
+    
+    border: 1px solid #ddd; /* 테두리를 조금 더 부드럽게 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    
+    /* 입체감을 위한 그림자 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    
+    cursor: pointer; /* 클릭 가능한 영역임을 표시 */
+}
+
+/* --- 점수판 스타일 --- */
+#scoreDisplay {
+    margin-top: 25px; /* 캔버스와의 간격 */
+    padding: 15px 30px;
+    background-color: #ffffff; /* 점수판은 흰색 배경 */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    font-size: 1.4em; /* 20px보다 조금 더 크게 */
+    font-weight: 300; /* "점수:", "목숨:" 텍스트는 얇게 */
+    line-height: 1.6;
+    text-align: left;
+    min-width: 150px;
+}
+
+/* --- 실제 점수/목숨 숫자 스타일 --- */
+#score,
+#lives {
+    display: inline-block; /* [수정] transform 애니메이션이 작동하도록 변경 */
+    font-weight: 700;
+    color: #007bff;
+    margin-left: 8px;
+}
+
+/* [디자인 기능] 목숨이 1개 남았을 때 적용될 스타일 */
+#lives.low-life {
+    color: #E53935; /* 빨간색으로 변경 */
+    animation: pulse 1s infinite; /* 깜빡이는 효과 */
+}
+
+/* 깜빡임 애니메이션 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
